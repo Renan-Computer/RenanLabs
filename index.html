@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio - Renan Barros</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #0d1117;
+      --bg-light: #161b22;
+      --text: #e6edf3;
+      --accent: #2f81f7;
+      --accent-light: #7ee787;
+      --gray: #30363d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: rgba(13, 17, 23, 0.9);
+      border-bottom: 1px solid var(--gray);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 1rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: var(--bg-light);
+        flex-direction: column;
+        width: 200px;
+        padding: 1rem;
+        border-left: 1px solid var(--gray);
+        display: none;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 5rem 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(45deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+      color: #c9d1d9;
+      margin-bottom: 2rem;
+    }
+
+    .search-box {
+      max-width: 500px;
+      margin: auto;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 50px;
+      border: 1px solid var(--gray);
+      background: var(--bg-light);
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .search-box button {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      padding: 10px 18px;
+      border-radius: 50px;
+      border: none;
+      background: var(--accent);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .search-box button:hover {
+      background: #1a5fb4;
+    }
+
+    /* ===== SOBRE MIM ===== */
+    .sobre {
+      background: var(--bg-light);
+      padding: 4rem 1rem;
+      border-top: 1px solid var(--gray);
+      border-bottom: 1px solid var(--gray);
+    }
+
+    .sobre .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .sobre h2 {
+      text-align: center;
+      color: var(--accent-light);
+      margin-bottom: 2.5rem;
+      font-size: 2rem;
+    }
+
+    .sobre-texto {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .sobre-texto .card {
+      background: rgba(13, 17, 23, 0.7);
+      border: 1px solid var(--gray);
+      padding: 1.5rem;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .sobre-texto .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+
+    .sobre-texto p {
+      font-size: 1.05rem;
+      color: #c9d1d9;
+      line-height: 1.8;
+    }
+
+    /* ===== PROJETOS ===== */
+    .projetos {
+      background: var(--bg-dark);
+      padding: 4rem 1rem;
+      border-top: 1px solid var(--gray);
+    }
+
+    .projetos h2 {
+      text-align: center;
+      color: var(--accent-light);
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+
+    .filtros {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .filtro-btn {
+      padding: 0.6rem 1.2rem;
+      background: var(--gray);
+      color: var(--text);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .filtro-btn.active,
+    .filtro-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .grid-projetos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .projeto-card {
+      background: var(--bg-light);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid var(--gray);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .projeto-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
+
+    .projeto-card h3 {
+      color: var(--accent-light);
+      font-size: 1.25rem;
+    }
+
+    .projeto-card p {
+      color: #c9d1d9;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .projeto-card a {
+      margin-top: auto;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .projeto-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== PERFIL GITHUB ===== */
+    .perfil {
+      background: var(--bg-light);
+      padding: 4rem 1rem;
+      border-top: 1px solid var(--gray);
+      border-bottom: 1px solid var(--gray);
+    }
+
+    .perfil h2 {
+      text-align: center;
+      color: var(--accent-light);
+      margin-bottom: 2.5rem;
+      font-size: 2rem;
+    }
+
+    .perfil-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .perfil-avatar img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .perfil-avatar img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .perfil-info {
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .perfil-info h3 {
+      color: var(--accent-light);
+      font-size: 1.5rem;
+    }
+
+    .perfil-info p {
+      color: #c9d1d9;
+      line-height: 1.6;
+    }
+
+    .perfil-stats {
+      display: flex;
+      gap: 2rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .perfil-stats div {
+      background: rgba(13,17,23,0.7);
+      padding: 0.8rem 1.2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      color: var(--text);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .perfil-stats div:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+
+    .github-btn {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .github-btn:hover {
+      background: #1a5fb4;
+    }
+
+    @media (max-width: 768px) {
+      .perfil-content {
+        flex-direction: column;
+      }
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--bg-dark);
+      border-top: 1px solid var(--gray);
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer p {
+      color: #8b949e;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a {
+      color: var(--text);
+      margin: 0 0.5rem;
+      font-size: 1.2rem;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <i class="fas fa-code"></i> Renan Barros
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="nav-links">
+          <a href="#home">Início</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#perfil">Perfil</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>Portfólio de Renan Barros</h1>
+      <p>Desenvolvedor apaixonado por criar soluções inovadoras e eficientes</p>
+      <div class="search-box">
+        <input type="text" placeholder="Digite seu usuário do GitHub..." id="github-username" value="Renan-Computer">
+        <button id="load-projects">Carregar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MIM -->
+  <section id="sobre" class="sobre">
+    <div class="container">
+      <h2>👋 Olá, visitante!</h2>
+      <div class="sobre-texto">
+        <div class="card">
+          <p>Seja muito bem-vindo ao meu cantinho digital.</p>
+        </div>
+        <div class="card">
+          <p>Meu nome é <strong>Renan Barros</strong>, e sou um entusiasta apaixonado por tecnologia e soluções inovadoras. Atualmente, sou calouro do curso de <strong>Ciência da Computação</strong> na <em>Cruzeiro do Sul Virtual</em>!</p>
+        </div>
+        <div class="card">
+          <p>Este portfólio é o meu campo de testes, meu laboratório de ideias e o espelho do meu crescimento. Aqui, você encontrará projetos que representam esforço, curiosidade e a vontade de construir o futuro.</p>
+        </div>
+        <div class="card">
+          <p><strong>Por que um portfólio no primeiro período?</strong><br>Acredito que a prática é a melhor professora. Cada projeto abaixo é um desafio que eu mesmo propus e uma habilidade que busquei desenvolver.</p>
+        </div>
+        <div class="card">
+          <p>Meu objetivo é transformar conceitos teóricos em aplicações tangíveis, mesmo que simples. Este espaço é a prova do meu comprometimento em aprender, iterar e evoluir constantemente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos" class="projetos">
+    <div class="container">
+      <h2>💻 Meus Projetos</h2>
+      <div class="filtros">
+        <button class="filtro-btn active" data-linguagem="all">Todos</button>
+        <button class="filtro-btn" data-linguagem="JavaScript">JavaScript</button>
+        <button class="filtro-btn" data-linguagem="Python">Python</button>
+        <button class="filtro-btn" data-linguagem="C">C</button>
+      </div>
+      <div class="grid-projetos" id="grid-projetos"></div>
+    </div>
+  </section>
+
+  <!-- PERFIL GITHUB -->
+  <section id="perfil" class="perfil">
+    <div class="container">
+      <h2>📊 Meu Perfil no GitHub</h2>
+      <div class="perfil-content">
+        <div class="perfil-avatar">
+          <img id="github-avatar" src="" alt="Avatar GitHub">
+        </div>
+        <div class="perfil-info">
+          <h3 id="github-name">Carregando...</h3>
+          <p id="github-bio">Buscando informações do perfil...</p>
+          <div class="perfil-stats">
+            <div><strong id="github-followers">0</strong> Seguidores</div>
+            <div><strong id="github-following">0</strong> Seguindo</div>
+            <div><strong id="github-repos">0</strong> Repositórios</div>
+          </div>
+          <a id="github-link" href="#" target="_blank" class="github-btn">Visitar GitHub <i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2025 Renan Barros. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="https://github.com/Renan-Computer" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/renan-barros" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:renan.barros@email.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Menu mobile
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    menuToggle.addEventListener("click", () => navLinks.classList.toggle("active"));
+
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) target.scrollIntoView({ behavior: 'smooth' });
+        if(navLinks.classList.contains('active')) navLinks.classList.remove('active');
+      });
+    });
+
+    // Projetos de exemplo
+    const projetos = [
+      { nome: "Portfolio", desc: "Meu portfólio pessoal em HTML, CSS e JS", linguagem: "JavaScript", url: "https://github.com/Renan-Computer/Portfolio" },
+      { nome: "Calculadora", desc: "Calculadora simples em Python", linguagem: "Python", url: "https://github.com/Renan-Computer/Calculadora" },
+      { nome: "Jogo da Velha", desc: "Implementação em C", linguagem: "
